@@ -14,8 +14,6 @@ export default function Form() {
     setWasSubmitted(true);
     setEmail(fieldValues.email);
     setPhone(fieldValues.phone);
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: "form_submit" });
   }
   return (
     <div className="bg-gray-100">

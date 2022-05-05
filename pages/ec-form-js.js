@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
 
 import ConfirmationCheckMark from "../components/ConfirmationCheckMark";
@@ -11,12 +11,20 @@ export default function ECFormJs() {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const fieldValues = Object.fromEntries(formData.entries());
+    window.enhanced_conversion_data = {
+      email: fieldValues.email,
+      phone_number: fieldValues.phone,
+    };
     setWasSubmitted(true);
     setEmail(fieldValues.email);
     setPhone(fieldValues.phone);
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: "form_submit" });
   }
+
+  useEffect(() => {
+    return () => {
+      window.enhanced_conversion_data = {};
+    };
+  }, []);
   return (
     <div className="bg-gray-100">
       <Head>
