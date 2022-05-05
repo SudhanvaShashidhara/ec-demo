@@ -1,15 +1,21 @@
 import { useState } from "react";
 import Head from "next/head";
 
+import ConfirmationCheckMark from "../components/ConfirmationCheckMark";
+
 export default function Form() {
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [wasSubmitted, setWasSubmitted] = useState(false);
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const fieldValues = Object.fromEntries(formData.entries());
     setWasSubmitted(true);
-    console.log(`Form Submitted : `);
-    console.log({ fieldValues });
+    setEmail(fieldValues.email);
+    setPhone(fieldValues.phone);
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "form_submit" });
   }
   return (
     <div className="bg-gray-100">
@@ -234,134 +240,158 @@ export default function Form() {
             </div>
 
             <div className="py-10 px-6 sm:px-10 lg:col-span-2 xl:p-12">
-              <h3 className="text-lg font-medium text-gray-900">
-                Send us a message
-              </h3>
-              <form
-                onSubmit={handleSubmit}
-                className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
-              >
-                <div>
-                  <label
-                    htmlFor="first-name"
-                    className="block text-sm font-medium text-gray-900"
+              {wasSubmitted ? (
+                <div className="flex justify-center items-center h-full form-submit-success">
+                  <ConfirmationCheckMark />
+                  <h1 className="text-xl text-center m-auto w-10/12">
+                    Thanks for submitting the form. A confirmation email is sent
+                    to <span className="ec-form-email">{email}</span>. We will
+                    also be contacting you at{" "}
+                    <span className="ec-form-phone">{phone}</span>
+                  </h1>
+                </div>
+              ) : (
+                <>
+                  <h3 className="text-lg font-medium text-gray-900">
+                    Send us a message
+                  </h3>
+                  <form
+                    onSubmit={handleSubmit}
+                    className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
                   >
-                    First name
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      name="first-name"
-                      id="first-name"
-                      autoComplete="given-name"
-                      className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label
-                    htmlFor="last-name"
-                    className="block text-sm font-medium text-gray-900"
-                  >
-                    Last name
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      name="last-name"
-                      id="last-name"
-                      autoComplete="family-name"
-                      className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-900"
-                  >
-                    Email
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      autoComplete="email"
-                      className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between">
-                    <label
-                      htmlFor="phone"
-                      className="block text-sm font-medium text-gray-900"
-                    >
-                      Phone
-                    </label>
-                    <span id="phone-optional" className="text-sm text-gray-500">
-                      Optional
-                    </span>
-                  </div>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      name="phone"
-                      id="phone"
-                      autoComplete="tel"
-                      className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
-                      aria-describedby="phone-optional"
-                    />
-                  </div>
-                </div>
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium text-gray-900"
-                  >
-                    Subject
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      name="subject"
-                      id="subject"
-                      className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
-                    />
-                  </div>
-                </div>
-                <div className="sm:col-span-2">
-                  <div className="flex justify-between">
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-900"
-                    >
-                      Message
-                    </label>
-                    <span id="message-max" className="text-sm text-gray-500">
-                      Max. 500 characters
-                    </span>
-                  </div>
-                  <div className="mt-1">
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows="4"
-                      className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 rounded-md"
-                      aria-describedby="message-max"
-                    ></textarea>
-                  </div>
-                </div>
-                <div className="sm:col-span-2 sm:flex sm:justify-end">
-                  <button
-                    type="submit"
-                    className="mt-2 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-auto"
-                  >
-                    Submit
-                  </button>
-                </div>
-              </form>
+                    <div>
+                      <label
+                        htmlFor="first-name"
+                        className="block text-sm font-medium text-gray-900"
+                      >
+                        First name
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          required
+                          type="text"
+                          name="first-name"
+                          id="first-name"
+                          autoComplete="given-name"
+                          className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="last-name"
+                        className="block text-sm font-medium text-gray-900"
+                      >
+                        Last name
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          required
+                          type="text"
+                          name="last-name"
+                          id="last-name"
+                          autoComplete="family-name"
+                          className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-gray-900"
+                      >
+                        Email
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          required
+                          id="email"
+                          name="email"
+                          type="email"
+                          autoComplete="email"
+                          className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex justify-between">
+                        <label
+                          htmlFor="phone"
+                          className="block text-sm font-medium text-gray-900"
+                        >
+                          Phone
+                        </label>
+                        <span
+                          id="phone-optional"
+                          className="text-sm text-gray-500"
+                        >
+                          Optional
+                        </span>
+                      </div>
+                      <div className="mt-1">
+                        <input
+                          required
+                          type="tel"
+                          name="phone"
+                          id="phone"
+                          autoComplete="tel"
+                          className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                          aria-describedby="phone-optional"
+                        />
+                      </div>
+                    </div>
+                    <div className="sm:col-span-2">
+                      <label
+                        htmlFor="subject"
+                        className="block text-sm font-medium text-gray-900"
+                      >
+                        Subject
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          type="text"
+                          name="subject"
+                          id="subject"
+                          className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                        />
+                      </div>
+                    </div>
+                    <div className="sm:col-span-2">
+                      <div className="flex justify-between">
+                        <label
+                          htmlFor="message"
+                          className="block text-sm font-medium text-gray-900"
+                        >
+                          Message
+                        </label>
+                        <span
+                          id="message-max"
+                          className="text-sm text-gray-500"
+                        >
+                          Max. 500 characters
+                        </span>
+                      </div>
+                      <div className="mt-1">
+                        <textarea
+                          id="message"
+                          name="message"
+                          rows="4"
+                          className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 rounded-md"
+                          aria-describedby="message-max"
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div className="sm:col-span-2 sm:flex sm:justify-end">
+                      <button
+                        type="submit"
+                        className="mt-2 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-auto"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </>
+              )}
             </div>
           </div>
         </div>
