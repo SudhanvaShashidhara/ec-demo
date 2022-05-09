@@ -26,7 +26,7 @@ export default function ECFormJs() {
     };
   }, []);
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-50">
       <Head>
         <title>EC Form - JavaScript</title>
       </Head>
@@ -38,7 +38,7 @@ export default function ECFormJs() {
           <h2 className="sr-only">Contact us</h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-3">
-            <div className="relative overflow-hidden py-10 px-6 bg-lime-700 sm:px-10 xl:p-12">
+            <div className="relative overflow-hidden py-10 px-6 bg-yellow-400 sm:px-10 xl:p-12">
               <div
                 className="absolute inset-0 pointer-events-none sm:hidden"
                 aria-hidden="true"
@@ -141,7 +141,7 @@ export default function ECFormJs() {
               <h3 className="text-lg font-medium text-white">
                 Contact information
               </h3>
-              <p className="mt-6 text-base text-lime-50 max-w-3xl">
+              <p className="mt-6 text-base text-white max-w-3xl">
                 Nullam risus blandit ac aliquam justo ipsum. Quam mauris
                 volutpat massa dictumst amet. Sapien tortor lacus arcu.
               </p>
@@ -149,9 +149,9 @@ export default function ECFormJs() {
                 <dt>
                   <span className="sr-only">Phone number</span>
                 </dt>
-                <dd className="flex text-base text-lime-50">
+                <dd className="flex text-base text-white">
                   <svg
-                    className="flex-shrink-0 w-6 h-6 text-lime-200"
+                    className="flex-shrink-0 w-6 h-6 text-gray-100"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -170,9 +170,9 @@ export default function ECFormJs() {
                 <dt>
                   <span className="sr-only">Email</span>
                 </dt>
-                <dd className="flex text-base text-lime-50">
+                <dd className="flex text-base text-white">
                   <svg
-                    className="flex-shrink-0 w-6 h-6 text-lime-200"
+                    className="flex-shrink-0 w-6 h-6 text-gray-100"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -189,9 +189,9 @@ export default function ECFormJs() {
                   <span className="ml-3">support@workcation.com</span>
                 </dd>
               </dl>
-              <ul role="list" className="mt-8 flex space-x-12">
+              <ul role="list" className="mt-8 flex space-x-12 text-slate-800">
                 <li>
-                  <a className="text-lime-200 hover:text-lime-100" href="#">
+                  <a className="text-gray-100 hover:text-white" href="#">
                     <span className="sr-only">Facebook</span>
                     <svg
                       width="24"
@@ -210,7 +210,7 @@ export default function ECFormJs() {
                   </a>
                 </li>
                 <li>
-                  <a className="text-lime-200 hover:text-lime-100" href="#">
+                  <a className="text-gray-100 hover:text-white" href="#">
                     <span className="sr-only">GitHub</span>
                     <svg
                       width="24"
@@ -229,7 +229,7 @@ export default function ECFormJs() {
                   </a>
                 </li>
                 <li>
-                  <a className="text-lime-200 hover:text-lime-100" href="#">
+                  <a className="text-gray-100 hover:text-white" href="#">
                     <span className="sr-only">Twitter</span>
                     <svg
                       width="24"
@@ -254,11 +254,8 @@ export default function ECFormJs() {
               {wasSubmitted ? (
                 <div className="flex justify-center items-center h-full form-submit-success">
                   <ConfirmationCheckMark />
-                  <h1 className="text-xl text-center m-auto w-10/12">
-                    Thanks for submitting the form. A confirmation email is sent
-                    to <span className="ec-form-email">{email}</span>. We will
-                    also be contacting you at{" "}
-                    <span className="ec-form-phone">{phone}</span>
+                  <h1 className="text-xl text-center m-auto w-10/12 lg:pr-24">
+                    Thanks for submitting the form.
                   </h1>
                 </div>
               ) : (
@@ -284,7 +281,7 @@ export default function ECFormJs() {
                           name="first-name"
                           id="first-name"
                           autoComplete="given-name"
-                          className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-lime-500 focus:border-lime-500 border-gray-300 rounded-md"
+                          className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-yellow-400 focus:border-yellow-400 border-gray-300 rounded-md"
                         />
                       </div>
                     </div>
@@ -302,7 +299,7 @@ export default function ECFormJs() {
                           name="last-name"
                           id="last-name"
                           autoComplete="family-name"
-                          className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-lime-500 focus:border-lime-500 border-gray-300 rounded-md"
+                          className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-yellow-400 focus:border-yellow-400 border-gray-300 rounded-md"
                         />
                       </div>
                     </div>
@@ -320,7 +317,7 @@ export default function ECFormJs() {
                           name="email"
                           type="email"
                           autoComplete="email"
-                          className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-lime-500 focus:border-lime-500 border-gray-300 rounded-md"
+                          className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-yellow-400 focus:border-yellow-400 border-gray-300 rounded-md"
                         />
                       </div>
                     </div>
@@ -346,7 +343,7 @@ export default function ECFormJs() {
                           name="phone"
                           id="phone"
                           autoComplete="tel"
-                          className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-lime-500 focus:border-lime-500 border-gray-300 rounded-md"
+                          className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-yellow-400 focus:border-yellow-400 border-gray-300 rounded-md"
                           aria-describedby="phone-optional"
                         />
                       </div>
@@ -363,7 +360,7 @@ export default function ECFormJs() {
                           type="text"
                           name="subject"
                           id="subject"
-                          className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-lime-500 focus:border-lime-500 border-gray-300 rounded-md"
+                          className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-yellow-400 focus:border-yellow-400 border-gray-300 rounded-md"
                         />
                       </div>
                     </div>
@@ -387,7 +384,7 @@ export default function ECFormJs() {
                           id="message"
                           name="message"
                           rows="4"
-                          className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-lime-500 focus:border-lime-500 border border-gray-300 rounded-md"
+                          className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-yellow-400 focus:border-yellow-400 border border-gray-300 rounded-md"
                           aria-describedby="message-max"
                         ></textarea>
                       </div>
@@ -395,7 +392,7 @@ export default function ECFormJs() {
                     <div className="sm:col-span-2 sm:flex sm:justify-end">
                       <button
                         type="submit"
-                        className="mt-2 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-lime-600 hover:bg-lime-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-500 sm:w-auto"
+                        className="mt-2 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-yellow-400 hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400 sm:w-auto"
                       >
                         Submit
                       </button>

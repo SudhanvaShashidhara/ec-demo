@@ -24,7 +24,7 @@ export default function ECFormdataLayer() {
     });
   }
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-50">
       <Head>
         <title>EC Form - dataLayer</title>
       </Head>
@@ -251,11 +251,8 @@ export default function ECFormdataLayer() {
               {wasSubmitted ? (
                 <div className="flex justify-center items-center h-full form-submit-success">
                   <ConfirmationCheckMark />
-                  <h1 className="text-xl text-center m-auto w-10/12">
-                    Thanks for submitting the form. A confirmation email is sent
-                    to <span className="ec-form-email">{email}</span>. We will
-                    also be contacting you at{" "}
-                    <span className="ec-form-phone">{phone}</span>
+                  <h1 className="text-xl text-center m-auto w-10/12 lg:pr-24">
+                    Thanks for submitting the form.
                   </h1>
                 </div>
               ) : (

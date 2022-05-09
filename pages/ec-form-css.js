@@ -16,7 +16,7 @@ export default function ECFormCss() {
     setPhone(fieldValues.phone);
   }
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-50">
       <Head>
         <title>EC Form - CSS Selector</title>
       </Head>
