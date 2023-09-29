@@ -7,26 +7,33 @@ export default function Document() {
       <Head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PCXRF7J');`,
+            __html: `
+          (function(){
+            var gTag = document.createElement('script');
+            gTag.async=1;
+            gTag.src="https://www.googletagmanager.com/gtag/js?id=AW-10852928527";
+            firstScript=document.getElementsByTagName('script')[0];
+            firstScript.parentNode.insertBefore(gTag,firstScript);
+            window.dataLayer = window.dataLayer || [];
+          })();
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-10852928527');
+          `,
           }}
-        ></script>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=GT-KFNPS8T"
         ></script>
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'GT-KFNPS8T');`,
+            __html: `
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PCXRF7J');
+`,
           }}
         ></script>
+
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       </Head>
       <body>
@@ -43,28 +50,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <script
           dangerouslySetInnerHTML={{
             __html: `
-      (function(){
-        var listen = false;
-        function listen_to_form_submit(){
-          if(!listen){
+          window.addEventListener('load', function(){
             var timer = setInterval(function(){
               if(document.querySelector('.form-submit-success')){
-                gtag('set', 'user_data', {
-                  "email": document.querySelector('.ec-form-email') ? document.querySelector('.ec-form-email').innerText.trim() : ''
-                });
-                gtag('event', 'conversion', {'send_to': 'AW-863193958/GRKUCPTnyZIYEOaWzZsD'});
+                gtag('event', 'conversion', {'send_to': 'AW-10852928527/fS2-CIuT38cYEI-Yirco'});
                 clearInterval(timer);
               }
             }, 1000);
-          }
-        }
-        document.addEventListener('click', function(e){
-          if(e.target.closest('button[type="submit"]') && window.location.pathname.includes('/form')){
-            listen_to_form_submit();
-          }
-        });
-      })();
-      `,
+          });
+          `,
           }}
         ></script>
       </body>
